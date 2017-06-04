@@ -1,3 +1,8 @@
+var express = require('express');
+var app = express();
+var data = require('./data.js');
+
+
 function serviceTest(){
     return "Service Response";
 }
@@ -6,13 +11,12 @@ function getPatient(){
     return "Patient";
 }
 
-function getPatients(){
-    var patients =[
-        {"firstName":"Bert","lastName":"Backblech"},
-        {"firstName":"Tom","lastName":"Ate"},
-        {"firstName":"Peter","lastName":"Silie"}
-    ];
-    return patients;
+function getPatients(callback){
+    data.getAllPatients(function(res){
+        callback(res);
+    });
+
+    
 }
 
 function save(patient){
@@ -29,5 +33,15 @@ function update(patient){
 
 // console.log(getPatients());
 
+// getPatients(function(res){
+            
+//             for(var i = 0; i < res.length; i++){
+//                 //var oldContent = document.getElementById("output").innerHTML;
+//                 //document.getElementById("output").innerHTML = oldContent + res[i].lastName + ", " + res[i].firstName + "<br>";
+//                 console.log(res[i].lastName + ", " + res[i].firstName);
+//             }    
+//             });
+
 module.exports.getPatient = getPatient;
+module.exports.getPatients = getPatients;
 module.exports.remove = remove;
