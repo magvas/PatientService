@@ -9,7 +9,7 @@ app.get('/patients',function(req,res){
 });
 
 app.get('/orders',function(req,res){
-    application.getPatients(function(result){
+    application.getOrders(function(result){
         res.send(result);
     });
 });

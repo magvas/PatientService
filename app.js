@@ -14,9 +14,13 @@ function getPatient(){
 function getPatients(callback){
     data.getAllPatients(function(res){
         callback(res);
-    });
+    });    
+}
 
-    
+function getOrders(callback){
+    data.getAllOrders(function(res){
+        callback(res);
+    });    
 }
 
 function save(patient){
@@ -44,4 +48,5 @@ function update(patient){
 
 module.exports.getPatient = getPatient;
 module.exports.getPatients = getPatients;
+module.exports.getOrders = getOrders;
 module.exports.remove = remove;

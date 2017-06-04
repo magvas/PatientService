@@ -2,21 +2,16 @@
 <html>
     <head>
         <title></title>
-        <meta charset="UTF-8">
-        <link href="css/style.css" rel="stylesheet">
-        <script src="app.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="css/w3.css">
+        <meta charset="UTF-8">       
+        <script src="client.js" type="text/javascript">        
+        </script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
-        <div id="output"></div>
-        <script>
-            getPatients(function(res){
-            
-            for(var i = 0; i < res.length; i++){
-                var oldContent = document.getElementById("output").innerHTML;
-                document.getElementById("output").innerHTML = oldContent + res[i].lastName + ", " + res[i].firstName + "<br>";
-            }    
-            });
-        </script>
+        <div id="nav" class="w3-container w3-blue">
+            <button id="btnGetPatients" class="w3-button w3-green" onclick="getPatients()">Get Patients</button>
+            <button id="btnGetOrders" class="w3-button w3-deep-orange" onclick="getOrders()">Get Orders</button>
+        </div>
+        <div id="output"></div>        
     </body>
 </html>
