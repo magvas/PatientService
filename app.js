@@ -17,6 +17,12 @@ function getPatients(callback){
     });    
 }
 
+function savePatient(patient,callback){
+    data.savePatient(patient,function(res){
+        callback(res);
+    });
+}
+
 function getOrders(callback){
     data.getAllOrders(function(res){
         callback(res);
@@ -50,3 +56,4 @@ module.exports.getPatient = getPatient;
 module.exports.getPatients = getPatients;
 module.exports.getOrders = getOrders;
 module.exports.remove = remove;
+module.exports.savePatient = savePatient;
