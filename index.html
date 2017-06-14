@@ -11,7 +11,26 @@
         <div id="nav" class="w3-container w3-blue">
             <button id="btnGetPatients" class="w3-button w3-green" onclick="getPatients()">Get Patients</button>
             <button id="btnGetOrders" class="w3-button w3-deep-orange" onclick="getOrders()">Get Orders</button>
+            <button id="btnAddPatients" class="w3-button w3-orange" onclick="showAddPatientDialog()">Add Patient</button>
         </div>
-        <div id="output"></div>        
+        <div id="output">
+            <ul id="outputList" name="OutputList" class="w3-ul w3-hoverable"> 
+            </ul>
+        </div>  
+        <div id="patientInput" style="visibility:hidden">
+            <div class="w3-container w3-blue">
+                <h2>Add Patient</h2>
+            </div>
+
+            <form id="fmPatientInput" name="PatientInput" class="w3-form" >
+                <label>Lastname:</label><input id="txtLastname" type="text" name="lastname" class="w3-input">
+                <label>Firstname:</label><input id="txtFirstname" type="text" name="firstname" class="w3-input">
+                <label> Gender:</label><input id="txtGender" type="text" name="gender" class="w3-input">
+                <input type="button" value="Submit" onclick="addPatient()">
+            </form>
+        </div> 
+        <div id="StatusBar" class="w3-panel w3-black">
+            <p id="txtStatus"/>
+        </div>     
     </body>
 </html>
