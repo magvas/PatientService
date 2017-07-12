@@ -96,9 +96,4 @@ function addListItem(nameOfList,item) {
     var newItem = document.createElement("li");
     newItem.innerText = item;
     outputList.appendChild(newItem);
-
-    // var listItem = document.createElement("a");
-    //     listItem.setAttribute("href", "#");
-    //     listItem.innerText = listItems[i].Fullname;
-    //     _listScreen.appendChild(listItem);
 }
