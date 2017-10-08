@@ -15,13 +15,13 @@
         <div id="sidebar" class="w3-row"> 
             <div class="w3-container w3-third">
                 <div class="w3-sidebar w3-bar-block">
-                    <button id="btnGetPatients" class="w3-bar-item w3-button" onclick="getPatients()">Get Patients</button>
-                    <button id="btnGetOrders" class="w3-bar-item w3-button" onclick="getOrders()">Get Orders</button>
-                    <button id="btnAddPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog()">Add Patient</button>                
+                    <button id="btnGetPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog(false);getPatients()">Get Patients</button>
+                    <button id="btnGetOrders" class="w3-bar-item w3-button" onclick="showAddPatientDialog(false);getOrders()">Get Orders</button>
+                    <button id="btnAddPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog(true)">Add Patient</button>                
                 </div>
             </div>
           <div class="w3-container w3-twothird">
-            <div id="output">                    
+            <div id="output" style="visibility:hidden">                    
                 <ul id="outputList" name="OutputList" class="w3-ul w3-hoverable"> 
                 </ul>
             </div>  

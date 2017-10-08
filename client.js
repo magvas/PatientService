@@ -7,6 +7,7 @@ function Patient(first, last, gender) {
 
 
 function getPatients(){    
+    showOutput(true);
     requestPatients(function(res){
 
         document.getElementById("outputList").innerHTML = "";
@@ -19,6 +20,7 @@ function getPatients(){
 }
 
 function getOrders(){
+    showOutput(true);
     requestOrders(function(res){
         
         document.getElementById("outputList").innerHTML = "";
@@ -73,8 +75,9 @@ function addPatient() {
 
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {            
-            status(this.responseText);
+            status(this.responseText);            
             getPatients();
+            resetInputForm();
        }
     };
 
@@ -83,8 +86,24 @@ function addPatient() {
     xhttp.send();
 }
 
-function showAddPatientDialog(){
-    document.getElementById("patientInput").style.visibility = "visible";
+function showAddPatientDialog(visible){
+    showOutput(false);
+
+    if (visible == true) {
+        document.getElementById("patientInput").style.visibility = "visible";
+    } else {
+        document.getElementById("patientInput").style.visibility = "hidden";
+    }
+    
+}
+
+function showOutput(visible){
+    if (visible == true) {
+        document.getElementById("output").style.visibility = "visible";
+    } else {
+        document.getElementById("output").style.visibility = "hidden";
+    }
+    
 }
 
 function status(statusText){
@@ -96,4 +115,10 @@ function addListItem(nameOfList,item) {
     var newItem = document.createElement("li");
     newItem.innerText = item;
     outputList.appendChild(newItem);
+}
+
+function resetInputForm(){
+    document.getElementById("txtFirstname").value = '';
+    document.getElementById("txtLastname").value = '';
+    document.getElementById("txtGender").value = '';
 }
