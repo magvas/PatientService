@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var data = require('./data.js');
+var data = require('./dataMongo.js');
 
 
 function serviceTest(){

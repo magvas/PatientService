@@ -1,11 +1,3 @@
-function Patient(first, last, gender) {
-    this.firstName = first;
-    this.lastName = last;
-    this.gender = gender;
-} 
-
-
-
 function getPatients(){    
     showOutput(true);
     requestPatients(function(res){
@@ -13,7 +5,7 @@ function getPatients(){
         document.getElementById("outputList").innerHTML = "";
 
         for(var i = 0; i < res.length; i++){            
-            var item = res[i].PATID + " - " + res[i].LASTNAME + ", " + res[i].FIRSTNAME + " (" + res[i].GENDER + ")";
+            var item = res[i].patid + " - " + res[i].lastname + ", " + res[i].firstname + " (" + res[i].gender + ")";
             addListItem("outputList",item);
         }    
     });
@@ -40,7 +32,13 @@ function requestPatients(callback) {
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             patients = JSON.parse(this.responseText);
-            callback(patients);
+            var patientsList = [];                    
+            for(var i = 0; i < patients.length; i++){        
+                var patient = new Patient(patients[i].patid,patients[i].firstname,patients[i].lastname,patients[i].gender);                    
+                patientsList.push(patient);
+            } 
+
+            callback(patientsList);
        }
     };
 
@@ -122,3 +120,5 @@ function resetInputForm(){
     document.getElementById("txtLastname").value = '';
     document.getElementById("txtGender").value = '';
 }
+
+module.exports.remove = remove;

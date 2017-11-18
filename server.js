@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var application = require('./app.js');
+var model = require('./model.js');
 
 app.all('/*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -9,7 +10,7 @@ app.all('/*', function(req, res, next) {
 });
 
 app.get('/patients',function(req,res){
-    application.getPatients(function(result){
+    application.getPatients(function(result){        
         res.send(result);
     });
 });
