@@ -30,4 +30,11 @@ app.get('/savepatient',function(req,res){
 
 app.listen(3000,function(){
     console.log('Service listening on port 3000!');
+
+    // var patient = new model.Patient('6767','Tim','Taler','m');
+
+    // application.savePatient(patient,function(result){
+    //     res.send(result);
+    // });
 });
+

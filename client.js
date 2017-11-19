@@ -1,4 +1,4 @@
-function getPatients(){    
+function getPatients(){      
     showOutput(true);
     requestPatients(function(res){
 
@@ -12,6 +12,7 @@ function getPatients(){
 }
 
 function getOrders(){
+    status('');
     showOutput(true);
     requestOrders(function(res){
         
@@ -56,7 +57,9 @@ function requestOrders(callback) {
         if (this.readyState == 4 && this.status == 200) {
             orders = JSON.parse(this.responseText);
             callback(orders);
-       }
+        } else{
+            status(this.responseText);
+        }
     };
 
 
@@ -64,8 +67,8 @@ function requestOrders(callback) {
     xhttp.send();
 }
 
-function addPatient() {
-    var newPatient = new Patient(document.getElementById("txtLastname").value,document.getElementById("txtFirstname").value,document.getElementById("txtGender").value);    
+function addPatient() {    
+    var newPatient = new Patient(null,document.getElementById("txtLastname").value, document.getElementById("txtFirstname").value, document.getElementById("txtGender").value);
 
     var xhttp = new XMLHttpRequest();
 
@@ -76,15 +79,19 @@ function addPatient() {
             status(this.responseText);            
             getPatients();
             resetInputForm();
-       }
+        }
+        else{
+            status(this.responseText);
+        }
     };
 
-    var params = "?lastname=" + newPatient.lastName + "&firstname=" + newPatient.firstName + "&gender=" + newPatient.gender;
+    var params = "?lastname=" + newPatient.lastname + "&firstname=" + newPatient.firstname + "&gender=" + newPatient.gender;
     xhttp.open("GET", "http://localhost:3000/savepatient" + params, true,);
     xhttp.send();
 }
 
 function showAddPatientDialog(visible){
+    status('');
     showOutput(false);
 
     if (visible == true) {
@@ -105,7 +112,7 @@ function showOutput(visible){
 }
 
 function status(statusText){
-    document.getElementById("txtStatus").innerHTML = statusText;
+    document.getElementById("txtStatus").innerText = statusText;
 }
 
 function addListItem(nameOfList,item) {     

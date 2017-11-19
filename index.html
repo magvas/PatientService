@@ -10,26 +10,25 @@
     <body>
         <div id="nav" class="w3-bar w3-blue">
             <button id="btnOverview" class="w3-bar-item w3-button" onclick="">Overview</button>
-            <button id="btnOverview" class="w3-bar-item w3-button" onclick="">Routine</button>            
+            <button id="btnOverview" class="w3-bar-item w3-button" onclick="">Routine</button> 
+            <button id="btnGetPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog(false);status('');getPatients()">Get Patients</button> 
+            <button id="btnGetOrders" class="w3-bar-item w3-button" onclick="showAddPatientDialog(false);getOrders();status('')">Get Orders</button>
+            <button id="btnAddPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog(true);status('')">Add Patient</button>          
         </div>
         <div id="sidebar" class="w3-row"> 
-            <div class="w3-container w3-third">
+            <!-- <div class="w3-container w3-third">
                 <div class="w3-sidebar w3-bar-block">
                     <button id="btnGetPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog(false);getPatients()">Get Patients</button>
                     <button id="btnGetOrders" class="w3-bar-item w3-button" onclick="showAddPatientDialog(false);getOrders()">Get Orders</button>
                     <button id="btnAddPatients" class="w3-bar-item w3-button" onclick="showAddPatientDialog(true)">Add Patient</button>                
                 </div>
-            </div>
+            </div> -->
           <div class="w3-container w3-twothird">
             <div id="output" style="visibility:hidden">                    
                 <ul id="outputList" name="OutputList" class="w3-ul w3-hoverable"> 
                 </ul>
             </div>  
-            <div id="patientInput" style="visibility:hidden">
-                <div class="w3-container w3-blue">
-                    <h2>Add Patient</h2>
-                </div>
-
+            <div id="patientInput" style="visibility:hidden">                
                 <form id="fmPatientInput" name="PatientInput" class="w3-form" >
                     <label>Lastname:</label><input id="txtLastname" type="text" name="lastname" class="w3-input">
                     <label>Firstname:</label><input id="txtFirstname" type="text" name="firstname" class="w3-input">
@@ -39,7 +38,7 @@
             </div>  
           </div>
         </div>        
-        <div id="StatusBar" class="w3-panel w3-black">
+        <div id="StatusBar" class="w3-red">
             <p id="txtStatus"/>
         </div>     
     </body>

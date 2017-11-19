@@ -4,3 +4,5 @@ function Patient(patid,first, last, gender) {
         this.lastname = last;
         this.gender = gender;
     }
+
+    module.exports.Patient = Patient;
