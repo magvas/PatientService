@@ -21,7 +21,7 @@ suite('remove',function () {
 });
 
 suite('savePatient',function () {
-    test("function 'savePatient' shall return 'Patient created successful'", function () {
+    test.only("function 'savePatient' shall return 'Patient created successful'", function () {
       var expected = "Patient created successful";
 
       var patient = new model.Patient('6767','Tim','Taler','m');
