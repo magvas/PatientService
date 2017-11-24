@@ -1,40 +1,40 @@
-var express = require('express');
-var app = express();
-var application = require('./app.js');
-var model = require('./model.js');
+var express = require("express");
+var router = express();
+var app = require("./app");
+var http = require("http");
+var model = require("./model");
+const log = require("./log");
 
-app.all('/*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
+router.use(log({"level":"info"}));
+
+router.all("/*", function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
 });
 
-app.get('/patients',function(req,res){
-    application.getPatients(function(result){        
+router.get("/patients",function(req,res){
+    app.getPatients(function(result){        
         res.send(result);
     });
 });
 
-app.get('/orders',function(req,res){
-    application.getOrders(function(result){
+router.get("/orders",function(req,res){
+    app.getOrders(function(result){
         res.send(result);
     });
 });
 
-app.get('/savepatient',function(req,res){
-        var patient = {lastname: req.query.lastname,firstname: req.query.firstname,gender: req.query.gender};       
-    application.savePatient(patient,function(result){
+router.get("/savepatient",function(req,res){
+    var patient = new model.Patient(null,req.query.firstname,req.query.lastname,req.query.gender);       
+    app.savePatient(patient,function(result){
         res.send(result);
     });    
 });
 
-app.listen(3000,function(){
-    console.log('Service listening on port 3000!');
+var httpServer = http.createServer(router);
 
-    // var patient = new model.Patient('6767','Tim','Taler','m');
-
-    // application.savePatient(patient,function(result){
-    //     res.send(result);
-    // });
+httpServer.listen(3000,function(){
+    console.log("Service listening on port 3000!");   
 });
 

@@ -1,4 +1,7 @@
 // Platzieren Sie Ihre Einstellungen in dieser Datei, um Standard- und Benutzereinstellungen zu überschreiben.
 {
-        "mocha.options": {"ui":"tdd"}
+        "mocha.options": {
+                "ui": "tdd"
+        },
+        "eslint.enable": true
 }
