@@ -127,5 +127,3 @@ function resetInputForm(){
     document.getElementById("txtLastname").value = '';
     document.getElementById("txtGender").value = '';
 }
-
-module.exports.remove = remove;

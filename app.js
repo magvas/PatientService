@@ -1,6 +1,5 @@
 var data = require("./dataMongo.js");
 
-
 function getPatient(){
     return "Patient";
 }

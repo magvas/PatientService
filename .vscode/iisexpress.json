@@ -1,6 +1,6 @@
 {
   "port": 33338,
-  "path": "d:\\Workspaces\\LabService\\PatientService",
+  "path": "d:\\Workspaces\\LabService\\PatientService\\client",
   "clr": "v4.0",
   "protocol": "http"
 }

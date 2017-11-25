@@ -7,8 +7,12 @@
     "test": "test"
   },
   "dependencies": {
+    "body-parser": "1.18.2",
+    "cors": "2.8.4",
     "express": "^4.14.0",
+    "express-session": "1.15.6",
     "mongodb": "^2.2.33",
+    "nocache": "2.0.0",
     "node-mysql": "^0.4.2",
     "unit.js": "^2.0.0"
   },

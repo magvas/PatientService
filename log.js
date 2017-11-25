@@ -1,6 +1,6 @@
 const log = (options) => {
     return (req,res,next) =>{
-        console.log(`${Date()} - (${options.level}) - ${req.method} ${req.path}`);
+        console.log(`${Date()} - (${options.level}) - ${req.method} ${req.path} - ${req.session.user}`);
         next();
     };
 };
