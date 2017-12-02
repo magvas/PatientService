@@ -1,14 +1,15 @@
 function getPatients(){      
     showOutput(true);
-    requestPatients(function(res){
+    requestPatients(providePatientList);
+}
 
-        document.getElementById("outputList").innerHTML = "";
-
-        for(var i = 0; i < res.length; i++){            
-            var item = res[i].patid + " - " + res[i].lastname + ", " + res[i].firstname + " (" + res[i].gender + ")";
-            addListItem("outputList",item);
-        }    
-    });
+function providePatientList(patientObjectList){
+    document.getElementById("outputList").innerHTML = "";
+    
+    for(var i = 0; i < patientObjectList.length; i++){            
+        var item = patientObjectList[i].patid + " - " + patientObjectList[i].lastname + ", " + patientObjectList[i].firstname + " - " + patientObjectList[i].birthday +" (" + patientObjectList[i].gender + ")";
+        addListItem("outputList",item);
+    }
 }
 
 function getOrders(){

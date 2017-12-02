@@ -1,4 +1,5 @@
-var mongoClient      = require("mongodb").MongoClient;
+var mongoClient = require("mongodb").MongoClient;
+var logging = require("./common/logger");
 var dburl = "mongodb://homeserver:27017/laboratory";
 
 function getAllPatients(callback){
@@ -16,7 +17,7 @@ function getAllPatients(callback){
                     callback(result);
                     db.close();
                 }
-            })
+            });
         } 
     });    
 }
@@ -36,7 +37,10 @@ function savePatient(patient,callback) {
                 if (err) {
                     callback(err);
                 } else {
-                    callback(`Patient with ID ${result.ops[0].patid} created successful`);                    
+                    var message = `Patient with ID ${result.ops[0].patid} created successful`;
+                    callback(message); 
+                    var logger = new logging.logger();
+                    logger.info(message);                                      
                 }
             });  
         }
