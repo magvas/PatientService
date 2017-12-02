@@ -30,9 +30,10 @@
             </div>  
             <div id="patientInput" style="visibility:hidden">                
                 <form id="fmPatientInput" name="PatientInput" class="w3-form" >
-                    <label>Lastname:</label><input id="txtLastname" type="text" name="lastname" class="w3-input">
-                    <label>Firstname:</label><input id="txtFirstname" type="text" name="firstname" class="w3-input">
-                    <label> Gender:</label><input id="txtGender" type="text" name="gender" class="w3-input">
+                    <label>Lastname:</label><input id="txtLastname" type="text" name="lastname" class="w3-input" required/>
+                    <label>Firstname:</label><input id="txtFirstname" type="text" name="firstname" class="w3-input" required/>
+                    <label>Gender:</label><input id="txtGender" type="text" name="gender" class="w3-input" required/>
+                    <label>Birthday</label><input id="txtBirthday" type="date" name="birthday" class="w3-input"  required/>
                     <input type="button" value="Submit" onclick="addPatient()">
                 </form>
             </div>  

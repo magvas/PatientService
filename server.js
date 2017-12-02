@@ -52,7 +52,7 @@ app.get("/orders",function(req,res){
 app.get("/savepatient",function(req,res){
     /// Use this line if clients sends JSON data and not an URL string for data
     // var patient = new model.Patient(null,req.body.firstname,req.body.lastname,req.body.gender);
-    var patient = new model.Patient(null,req.query.firstname,req.query.lastname,req.query.gender);       
+    var patient = new model.Patient(null,req.query.firstname,req.query.lastname,req.query.gender,req.query.birthday);       
     application.savePatient(patient,function(result){
         res.send(result);
     });    

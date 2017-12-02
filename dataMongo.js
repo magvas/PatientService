@@ -1,29 +1,29 @@
-var mongoClient      = require('mongodb').MongoClient;
-var dburl = 'mongodb://homeserver:27017/laboratory';
+var mongoClient      = require("mongodb").MongoClient;
+var dburl = "mongodb://homeserver:27017/laboratory";
 
- function getAllPatients(callback){
+function getAllPatients(callback){
     mongoClient.connect(dburl,function (err,db) {
         if (err) {
             return console.dir(err)
         } else {
-            var patients = db.collection('patients');
+            var patients = db.collection("patients");
      
             patients.find({}).toArray(function (err, result) {
                 if (err) {
-                    console.log('Error while performing Query.');
+                    console.log("Error while performing Query.");
                 }
                 else{
-                callback(result);
-                db.close();
+                    callback(result);
+                    db.close();
                 }
             })
         } 
-     });    
+    });    
 }
 
 
 function getAllOrders(callback){
-    callback('Not implemented yet!');   
+    callback("Not implemented yet!");   
 }
 
 function savePatient(patient,callback) {
@@ -31,12 +31,12 @@ function savePatient(patient,callback) {
         if (err) {
             callback(err);
         } else {
-            var patients = db.collection('patients');
-             patients.insert(patient, {w:1}, function(err, result) {
+            var patients = db.collection("patients");
+            patients.insert(patient, {w:1}, function(err, result) {
                 if (err) {
                     callback(err);
                 } else {
-                    callback("Patient created successful");
+                    callback(`Patient with ID ${result.ops[0].patid} created successful`);                    
                 }
             });  
         }

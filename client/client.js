@@ -12,7 +12,7 @@ function getPatients(){
 }
 
 function getOrders(){
-    status('');
+    status("");
     showOutput(true);
     requestOrders(function(res){
         
@@ -20,7 +20,7 @@ function getOrders(){
 
         for(var i = 0; i < res.length; i++){            
             var item = res[i].ORDERID + " | " + res[i].ORDERER + " | " + res[i].ORDERDATE + " | " + res[i].PRIORITY;
-             addListItem("outputList",item);
+            addListItem("outputList",item);
         } 
     });
 }
@@ -31,17 +31,17 @@ function requestPatients(callback) {
     var patients;
 
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState == 4 && this.status == 200) {
             patients = JSON.parse(this.responseText);
             var patientsList = [];                    
             for(var i = 0; i < patients.length; i++){        
-                var patient = new Patient(patients[i].patid,patients[i].firstname,patients[i].lastname,patients[i].gender);                    
+                var patient = new Patient(patients[i].patid,patients[i].firstname,patients[i].lastname,patients[i].gender,patients[i].birthday);                    
                 patientsList.push(patient);
             } 
 
             callback(patientsList);
-       }
-    };
+        }
+    };
 
 
     xhttp.open("GET", "http://localhost:3000/patients", true);
@@ -54,13 +54,13 @@ function requestOrders(callback) {
     var orders;
 
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState == 4 && this.status == 200) {
             orders = JSON.parse(this.responseText);
             callback(orders);
-        } else{
+        } else{
             status(this.responseText);
         }
-    };
+    };
 
 
     xhttp.open("GET", "http://localhost:3000/orders", true);
@@ -68,30 +68,36 @@ function requestOrders(callback) {
 }
 
 function addPatient() {    
-    var newPatient = new Patient(null,document.getElementById("txtLastname").value, document.getElementById("txtFirstname").value, document.getElementById("txtGender").value);
+    var newPatient = new Patient(
+        null,
+        document.getElementById("txtLastname").value, 
+        document.getElementById("txtFirstname").value, 
+        document.getElementById("txtGender").value,
+        document.getElementById("txtBirthday").value
+    );
 
     var xhttp = new XMLHttpRequest();
 
     var orders;
 
     xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {            
+        if (this.readyState == 4 && this.status == 200) {            
             status(this.responseText);            
             getPatients();
             resetInputForm();
-        }
+        }
         else{
             status(this.responseText);
         }
-    };
+    };
 
-    var params = "?lastname=" + newPatient.lastname + "&firstname=" + newPatient.firstname + "&gender=" + newPatient.gender;
-    xhttp.open("GET", "http://localhost:3000/savepatient" + params, true,);
+    var params = "?lastname=" + newPatient.lastname + "&firstname=" + newPatient.firstname + "&gender=" + newPatient.gender + "&birthday=" + newPatient.birthday;
+    xhttp.open("GET", "http://localhost:3000/savepatient" + params, true);
     xhttp.send();
 }
 
 function showAddPatientDialog(visible){
-    status('');
+    status("");
     showOutput(false);
 
     if (visible == true) {
@@ -123,7 +129,7 @@ function addListItem(nameOfList,item) {
 }
 
 function resetInputForm(){
-    document.getElementById("txtFirstname").value = '';
-    document.getElementById("txtLastname").value = '';
-    document.getElementById("txtGender").value = '';
+    document.getElementById("txtFirstname").value = "";
+    document.getElementById("txtLastname").value = "";
+    document.getElementById("txtGender").value = "";
 }
