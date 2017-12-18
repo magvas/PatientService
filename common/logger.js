@@ -14,7 +14,7 @@ function logger(){
     
     this.writeToLogfile = (loggingText) => {
         var logFilePath = this.defaultLogDir + "" + this.defaultLogFile;
-        fs.appendFile(logFilePath,loggingText, (err) => {
+        fs.appendFile(logFilePath, Date.now() + " - " + loggingText, (err) => {
             if (err) {
                 throw err;
             }
